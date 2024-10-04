@@ -89,6 +89,7 @@ public class BoardService {
 		try {
 			Optional<Board> board = br.findById(idx);
 			String userid = board.get().getMember().getUserid();
+			
 			Optional<Member> member = mr.findById(getUserIDFromToken());
 			Role role = member.get().getRole();
 

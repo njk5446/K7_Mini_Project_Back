@@ -25,20 +25,24 @@ public class BoardController {
 	// 게시판 출력(GET)
 	@GetMapping("/board")
 	public ResponseEntity<?> getBoard(
-			@PageableDefault(page = 0, size = 5, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable,
+			@PageableDefault(page = 0,
+							 size = 5, 
+							 sort = "idx", 
+							 direction = Sort.Direction.DESC) 
+			Pageable pageable,
 			@RequestParam(name = "sno") int station_no) {
 		return ResponseEntity.ok(bs.getBoards(pageable, station_no));
 	}
 
 	// 게시판 글 조회(GET)
 	@GetMapping("/board/view")
-	public ResponseEntity<?> viewBoard(@RequestParam(name = "idx") int idx) {
+	public ResponseEntity<?> viewBoard(@RequestParam int idx) {
 		return ResponseEntity.ok(bs.viewBoards(idx));
 	}
 	
 	// 게시판 게시글 유저 검증용 메서드
 	@PostMapping("/checkUser")
-	public ResponseEntity<?> checkUser(@RequestParam(name = "idx") int idx) {
+	public ResponseEntity<?> checkUser(@RequestParam int idx) {
 		return ResponseEntity.status(bs.checkUser(idx)).body(null);
 	}
 
@@ -65,7 +69,7 @@ public class BoardController {
 	// 게시판에 글 수정하기(POST)
 	@PostMapping("/edit")
 	public ResponseEntity<?> editBoard(
-			@RequestBody Board board, @RequestParam(name = "idx") int idx) {
+			@RequestBody Board board, @RequestParam int idx) {
 		try {
 			int x = bs.editBoard(board, idx);
 			return ResponseEntity.status(x).body("");
@@ -76,7 +80,7 @@ public class BoardController {
 
 	// 게시판 글 지우기(POST)
 	@PostMapping("/delete")
-	public ResponseEntity<?> deleteBoard(@RequestParam(name = "idx") int idx) {
+	public ResponseEntity<?> deleteBoard(@RequestParam int idx) {
 		return ResponseEntity.ok(bs.deleteBoard(idx));
 	}
 

@@ -34,7 +34,7 @@ public class CORSConfig implements WebMvcConfigurer {
 						"http://192.168.0.131.nip.io:3000",
 						"http://192.168.0.126.nip.io:3000");
 		
-		registry.addMapping("/login/**")
+		registry.addMapping("/login/**") // "/login/"으로 시작하는 모든 하위 경로에 대한 CORS 설정 
 		.allowCredentials(true)
 		.allowedHeaders(HttpHeaders.CONTENT_TYPE,
 				HttpHeaders.AUTHORIZATION)
@@ -74,6 +74,7 @@ public class CORSConfig implements WebMvcConfigurer {
 						"http://192.168.0.126:3000",
 						"http://192.168.0.131.nip.io:3000",
 						"http://192.168.0.126.nip.io:3000");
+		
 		registry.addMapping("/search/**")
 		.allowCredentials(true)
 		.allowedMethods(

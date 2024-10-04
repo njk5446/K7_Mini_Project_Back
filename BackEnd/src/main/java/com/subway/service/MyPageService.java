@@ -77,6 +77,8 @@ public class MyPageService {
 		return br.getMyBoards(pageable, getUserIDFromToken());
 	}
 
+	
+	// 입력한 비밀번호 
 	public boolean checkPW(Member mem) {
 		try {
 			Member m = mr.findById(getUserIDFromToken()).orElseThrow();
