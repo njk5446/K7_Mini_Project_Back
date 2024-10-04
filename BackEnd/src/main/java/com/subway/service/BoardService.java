@@ -64,8 +64,12 @@ public class BoardService {
 	// 보드에 게시글 저장
 	public void saveBoard(int station_no, Board b) {
 		String userid = getUserIDFromToken();
-		br.save(Board.builder().title(b.getTitle()).content(b.getContent()).member(mr.findById(userid).get())
-				.createDate(new Date()).station_no(station_no).build());
+		br.save(Board.builder().title(b.getTitle())
+							   .content(b.getContent())
+							   .member(mr.findById(userid).get())
+							   .createDate(new Date())
+							   .station_no(station_no)
+							   .build());
 	}
 
 	// 보드 게시글 수정
